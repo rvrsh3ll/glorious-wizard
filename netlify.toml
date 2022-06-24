@@ -1,13 +1,23 @@
-[build.environment]
-  NPM_VERSION = "6.13.4"
-
 [build]
-  command = "npm run build"
-  publish = "dist"
+  publish = "exampleSite/public"
+  command = "hugo -s exampleSite"
+
+[build.environment]
+  HUGO_THEME = "repo"
+  HUGO_THEMESDIR = "/opt/build"
+  HUGO_VERSION = "0.72.0"
+
+[context.production.environment]
+  HUGO_BASEURL = "https://learn.netlify.app/"
 
 [context.deploy-preview]
-  command = "npm run build:preview"
+  command = "hugo -s exampleSite -b $DEPLOY_PRIME_URL"
 
-[dev]
-  command = "npm run start"
-  targetPort = 8888
+[context.deploy-preview.environment]
+  HUGO_ENABLEGITINFO = "true"
+
+[context.branch-deplpy]
+  command = "hugo -s exampleSite -b $DEPLOY_PRIME_URL"
+
+[context.branch-deploy.environment]
+  HUGO_ENABLEGITINFO = "true"

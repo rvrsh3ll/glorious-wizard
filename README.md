@@ -1,125 +1,97 @@
-# Victor Hugo
+# Hugo Learn Theme
 
-⚠️ **Deprecation Notice** 🏳
+This repository contains a theme for [Hugo](https://gohugo.io/), based on great [Grav Learn Theme](https://learn.getgrav.org/).
 
-We are focusing our resources on building new templates that help you build a better web, because of that we're deprecating this template. We care about the community so we propose if anyone wants to maintain or take stewardship over the project please contact us at [devexperience@netlify.com](mailto:devexperience@netlify.com). If you want to share anything with the team about this template, you can also fill out [this form](https://template-feedback.netlify.app/).
+Visit the [theme documentation](https://learn.netlify.com/en/) to see what is going on. It is actually built with this theme.
 
-As an alternative to this repository, we're recommending to take a look at [Hyas](https://github.com/h-enk/hyas) as a project to make use of. It is focused on latest practices with Hugo and is already completely Netlify deploy ready.
+[![wercker status](https://app.wercker.com/status/233466a2be73fcea400e7dc02ef6adf9/s/master "wercker status")](https://app.wercker.com/project/byKey/233466a2be73fcea400e7dc02ef6adf9)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmatcornic%2Fhugo-theme-learn.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmatcornic%2Fhugo-theme-learn?ref=badge_shield)
 
----
+## Main features
 
-**A Hugo boilerplate for creating truly epic websites**
+- Automatic Search
+- Multilingual mode
+- Unlimited menu levels
+- Automatic next/prev buttons to navigate through menu entries
+- Image resizing, shadow…
+- Attachments files
+- List child pages
+- Mermaid diagram (flowchart, sequence, gantt)
+- Customizable look and feel and themes variants
+- Buttons, Tip/Note/Info/Warning boxes, Expand
 
-This is a boilerplate for using [Hugo](https://gohugo.io/) as a static site generator and [Webpack 5](https://webpack.js.org/) as your asset pipeline.
+## Installation
 
-Victor Hugo setup to use [PostCSS v8](http://postcss.org/) and [Babel v7](https://babeljs.io/) for CSS and JavaScript compiling/transpiling.
+Navigate to your themes folder in your Hugo site and use the following commands:
 
-This project is released under the [MIT license](LICENSE). Please make sure you understand its implications and guarantees.
+```shell
+cd themes/
+git clone https://github.com/matcornic/hugo-theme-learn.git
+```
+
+Check that your Hugo version is minimum `0.25` with `hugo version`.
+
+![Overview](https://github.com/matcornic/hugo-theme-learn/raw/master/images/tn.png)
 
 ## Usage
 
-### :exclamation: Prerequisites
+- [Visit the documentation](https://learn.netlify.com/en/)
 
-This template has been tested to work with [Node.js](https://nodejs.org/en/download/) v16 and [npm](https://www.npmjs.com/get-npm) v6.
+## Download old versions (prior to 2.0.0)
 
-Next step, clone this repository and run:
+If you need old version for compatibility purpose, either download [theme source code from releases](https://github.com/matcornic/hugo-theme-learn/releases) or use the right git tag. For example, with `1.1.0`
 
-```bash
-npm install
+- Direct download way: https://github.com/matcornic/hugo-theme-learn/archive/1.1.0.zip
+- Git way:
+
+```shell
+cd themes/hugo-theme-learn
+git checkout tags/1.1.0
 ```
 
-This will take some time and will install all packages necessary to run Victor Hugo and its tasks.
+For both solutions, the documentation is available at https://github.com/matcornic/hugo-theme-learn/releases/download/1.1.0/hugo-learn-doc-1.1.0.zip
 
-### :construction_worker: Development
+## Credits
 
-While developing your website, use:
+Many thanks to [@vjeantet](https://github.com/vjeantet/) for the fork [docdock](https://github.com/vjeantet/hugo-theme-docdock). The v2 of this theme is mainly based on his work !
 
-```bash
-npm start
-```
+## License
 
-or for developing your website with `hugo server --buildDrafts --buildFuture`, use:
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fmatcornic%2Fhugo-theme-learn.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fmatcornic%2Fhugo-theme-learn?ref=badge_large)
 
-```bash
-npm run preview
-```
+## Releasing
 
-Then visit http://localhost:3000/ _- or a new browser windows popped-up already -_ to preview your new website. Webpack Dev Server will automatically reload the CSS or refresh the whole page, when stylesheets or content changes.
+Somewhat work-in-progress steps to release with [gren](https://github.com/github-tools/github-release-notes)
 
-### :package: Static build
+- Check all MRs assigned to the milestone are closed or pushed back to another release
+- Close the milestone
+- Check merged MRs on the milestone have a tag (Bug, Enhancement, etc.)
+- Tag and push the repo
 
-To build a static version of the website inside the `/dist` folder, run:
+  ```shell
+  git tag <tag>
+  git push origin <tag>
+  ```
 
-```bash
-npm run build
-```
+- Generate CHANGELOG.md with _gren_
 
-To get a preview of posts or articles not yet published, run:
+  ```shell
+  gren changelog  --override --generate --tags=all
+  ```
 
-```bash
-npm run build:preview
-```
+- Fix the date for the current release in CHANGELOG.md
+- Add the changelog to git and update the tag
 
-See [package.json](package.json#L8) for all tasks.
+  ```shell
+  git add CHANGELOG.md
+  git commit -m "Ship tag <tag>"
+  git push origin master
+  git tag -f <tag>
+  git push --force origin <tag>
+  ```
 
-## Structure
+- Generate release with _gren_
 
-```
-|--site                // Everything in here will be built with hugo
-|  |--content          // Pages and collections - ask if you need extra pages
-|  |--data             // YAML data files with any data for use in examples
-|  |--layouts          // This is where all templates go
-|  |  |--partials      // This is where includes live
-|  |  |--index.html    // The index page
-|  |--resources        // This is where all assets go
-|  |--static           // Files in here ends up in the public folder
-|--src                 // Files that will pass through the asset pipeline
-|  |--css              // Webpack will bundle imported css separately
-|  |--index.js         // index.js is the webpack entry for your css & js assets
-```
-
-## Basic Concepts
-
-You can read more about Hugo's template language in their documentation here:
-
-https://gohugo.io/templates/overview/
-
-The most useful page there is the one about the available functions:
-
-https://gohugo.io/templates/functions/
-
-For assets that are completely static and don't need to go through the asset pipeline,
-use the `site/static` folder. Images, font-files, etc, all go there.
-
-Files in the static folder end up in the web root. So a file called `site/static/favicon.ico`
-will end up being available as `/favicon.ico` and so on...
-
-The `src/index.js` file is the entrypoint for webpack and will be built to `/dist/main.js`
-
-You can use **ES6** and use both relative imports or import libraries from npm.
-
-Any CSS file imported into the `index.js` will be run through Webpack, compiled with [PostCSS Next](http://cssnext.io/), and
-minified to `/dist/[name].[hash:5].css`. Import statements will be resolved as part of the build.
-
-## Environment variables
-
-To separate the development and production _- aka build -_ stages, all tasks run with a node environment variable named either `development` or `production`.
-
-You can access the environment variable inside the theme files with `getenv "NODE_ENV"`. See the following example for a conditional statement:
-
-    {{ if eq (getenv "NODE_ENV") "development" }}You're in development!{{ end }}
-
-All tasks starting with _build_ set the environment variable to `production` - the other will set it to `development`.
-
-## Deploying to Netlify
-
-- Push your clone to your own GitHub repository.
-- [Create a new site on Netlify](https://app.netlify.com/start) and link the repository.
-
-Now Netlify will build and deploy your site whenever you push to git.
-
-You can also click this button:
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/netlify/victor-hugo)
-
-## Enjoy!! 😸
+  ```shell
+  gren release -t <tag>
+  ```
